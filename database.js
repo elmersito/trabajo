@@ -4,6 +4,6 @@ let config = {
     password: "279ef05e",
     port: 3306,
     database: "heroku_387d6fe6b649c65",
-    secret_key: "dghssdfh"
+    secret_key: "kj987zhf5643qsf5fd3q"
 };
 exports.config = config;
