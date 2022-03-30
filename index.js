@@ -5,8 +5,8 @@ const express = require("express"),
     bodyParser = require("body-parser"),
     myConnection = require("express-myconnection"),
     db = require("./database").config;
-hospitalsRoutes = require("./routes/hospital");
-doctorsRoutes = require("./routes/doctor");
+hospitalRoutes = require("./routes/hospital");
+doctorRoutes = require("./routes/doctor");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(myConnection(mysql, db));
