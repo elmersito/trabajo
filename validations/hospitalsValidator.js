@@ -1,25 +1,23 @@
 const { check, validationResult } = require("express-validator");
 
-const generatehospitalValidators = () => [
+const generateHospitalValidators = () => [
     check("name").notEmpty().isLength({ max: 50 }).withMessage("Invalid name"),
     check("address").notEmpty().isLength({ max: 50 }).withMessage("Invalid address"),
-    check("cellphone").notEmpty().isLength({ min: 10, max: 15 }).isNumeric().withMessage("Invalid phone (ten numbers)"),
+    check("cellphone").notEmpty().isLength({ max: 10 }).isNumeric().withMessage("Invalid phone (ten numbers)"),
     check("description").notEmpty().isLength({ max: 50 }).withMessage("Invalid description"),
 ]
 
-const generateIdhospitalvalidator = () => [
+const generateIdHospitalvalidator = () => [
     check("id").notEmpty().isNumeric().withMessage("Invalid id"),
 ]
 
 
-const updatehospitalValidator = () => [
+const updateHospitalValidator = () => [
 
-    check("id").notEmpty().isNumeric().withMessage("Invalid id"),
-    check("name").isLength({ max: 50 }).withMessage("Invalid name"),
-    check("lastname").isLength({ max: 50 }).withMessage("Invalid lastname"),
-    check("phone").optional().isLength({ min: 10, mas: 50 }).withMessage("Invalid phone"),
-    check("asignature").notEmpty().isLength({ max: 50 }).withMessage("Invalid subject please check your information"),
-    check("address").isLength({ max: 50 }).withMessage("Invalid address"),
+    check("name").notEmpty().isLength({ max: 50 }).withMessage("Invalid name"),
+    check("address").notEmpty().isLength({ max: 50 }).withMessage("Invalid address"),
+    check("cellphone").notEmpty().isLength({ max: 10 }).isNumeric().withMessage("Invalid phone (ten numbers)"),
+    check("description").notEmpty().isLength({ max: 50 }).withMessage("Invalid description"),
 
 ]
 const reporter = (req, res, next) => {
@@ -37,16 +35,16 @@ const reporter = (req, res, next) => {
 
 module.exports = {
     add: [
-        generatehospitalValidators(),
+        generateHospitalValidators(),
         reporter
     ],
 
     id: [
-        generateIdhospitalvalidator(),
+        generateIdHospitalvalidator(),
         reporter
     ],
     update: [
-        updatehospitalValidator(),
+        updateHospitalValidator(),
         reporter
     ]
 
