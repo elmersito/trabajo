@@ -33,7 +33,7 @@ controller.getdoctor = (req, res) => {
     });
 };
 
-controller.getdoctors = (req, res) => {
+controller.getDoctors = (req, res) => {
     const sql = "SELECT * FROM doctors;"
     req.getConnection((error, conn) => {
         if (error) {
@@ -95,7 +95,7 @@ controller.postDoctor = (req, res) => {
     })
 }
 
-controller.putdoctor = (req, res) => {
+controller.putDoctor = (req, res) => {
     const sql = "UPDATE doctors SET ? WHERE id = ?";
     req.getConnection((error, conn) => {
         if (error) {
@@ -135,7 +135,7 @@ controller.putdoctor = (req, res) => {
     })
 }
 
-controller.deletedoctor = (req, res) => {
+controller.deleteDoctor = (req, res) => {
     const sql = "DELETE from doctors WHERE id = ?";
     req.getConnection((error, conn) => {
         if (error) {
