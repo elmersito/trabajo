@@ -4,7 +4,7 @@ const generatedoctorValidator = () => [
     check("name").notEmpty().isLength({ max: 50 }).withMessage("Invalid name"),
     check("lastname").notEmpty().isLength({ max: 50 }).withMessage("Invalid lastname"),
     check("address").notEmpty().isLength({ max: 50 }).withMessage("Invalid address"),
-    check("phone").notEmpty().isLength({ min: 10, max: 15 }).isNumeric().withMessage("Invalid phone (ten numbers)"),
+    check("phone").notEmpty().isLength({ max: 10 }).isNumeric().withMessage("Invalid phone (ten numbers)"),
 ]
 
 const generateIdmdoctorValidator = () => [
@@ -15,7 +15,7 @@ const updatedoctorValidator = () => [
     check("name").notEmpty().isLength({ max: 50 }).withMessage("Invalid name"),
     check("lastname").notEmpty().isLength({ max: 50 }).withMessage("Invalid lastname"),
     check("address").notEmpty().isLength({ max: 50 }).withMessage("Invalid address"),
-    check("phone").notEmpty().isLength({ min: 10, max: 15 }).isNumeric().withMessage("Invalid phone (ten numbers)"),
+    check("phone").notEmpty().isLength({ max: 10 }).isNumeric().withMessage("Invalid phone (ten numbers)"),
 ]
 
 const reporter = (req, res, next) => {
@@ -36,17 +36,17 @@ const reporter = (req, res, next) => {
 module.exports = {
 
     add: [
-        generatedoctorValidator(),
+        generateDoctorValidator(),
         reporter
     ],
 
     id: [
-        generateIdmdoctorValidator(),
+        generateIdDoctorValidator(),
         reporter
     ],
 
     update: [
-        updatedoctorValidator(),
+        updateDoctorValidator(),
         reporter
     ]
 }
