@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const hospitalsController = require('../controllers/hospitalsController');
-const hospitalValidator = require("../validations/hospitalsValidator");
+const hospitalValidator = require("../validations/hospitalValidator");
 const jwToken = require("../validations/jwtValidation");
-router.get('/hospital', hospitalsController.gethospital);
-router.get('/hospitals', jwToken.validateToken hospitalsController.gethospitals);
-router.post('/hospital', hospitalValidator.add, hospitalsController.posthospital);
+router.get('/hospital', hospitalsController.getHospital);
+router.get('/hospitals', jwToken.validateToken, hospitalsController.getHospitals);
+router.post('/hospital', hospitalValidator.add, hospitalsController.postHospital);
 router.post("/login", hospitalValidator.id, hospitalsController.getLogin);
-router.put('/hospital', hospitalValidator.update, hospitalsController.posthospital);
-router.delete('/hospital', hospitalValidator.id, hospitalsController.deletehospital);
+router.put('/hospital', hospitalValidator.update, hospitalsController.postHospital);
+router.delete('/hospital', hospitalValidator.id, hospitalsController.deleteHospital);
 module.exports = router;
