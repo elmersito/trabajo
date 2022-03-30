@@ -5,13 +5,13 @@ const express = require("express"),
     bodyParser = require("body-parser"),
     myConnection = require("express-myconnection"),
     db = require("./database").config;
-hospitalsRoutes = require("./routes/hospitals");
-doctorsRoutes = require("./routes/doctors");
+hospitalsRoutes = require("./routes/hospital");
+doctorsRoutes = require("./routes/doctor");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(myConnection(mysql, db));
-app.use("/hospital", hospitalsRoutes);
-app.use("/doctor", doctorsRoutes);
+app.use("/hospital", hospitalRoutes);
+app.use("/doctor", doctorRoutes);
 
 app.listen(puerto, err => {
     if (err) {
